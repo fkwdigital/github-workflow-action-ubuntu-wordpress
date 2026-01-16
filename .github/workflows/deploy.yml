@@ -1,0 +1,19 @@
+name: Deploy to Ubuntu Server
+on:
+  push:
+    branches: [prd]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Server
+        uses: fkwdigital/github-workflow-action-ubuntu-wordpress@v1
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_PATH: '/var/www/html'
+          SOURCE: './public/'

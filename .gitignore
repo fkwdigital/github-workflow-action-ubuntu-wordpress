@@ -1,0 +1,10 @@
+logs
+*.log
+npm-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+node_modules/
+.npm
+.env
+.env.test
+.idea
+github-action-cloudways*

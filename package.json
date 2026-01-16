@@ -1,0 +1,29 @@
+{
+  "name": "github-workflow-action-ubuntu-wordpress",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GitHub workflow action customized specifically for WordPress deployments on Ubuntu servers, but can be adjusted to work with any kind of typical website setup.",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fkwdigital/github-workflow-action-ubuntu-wordpress.git"
+  },
+  "license": "MIT",
+  "author": "Chris Gleason <chris@fkwdigital.com>",
+  "dependencies": {
+    "command-exists": "1.2.9",
+    "node-cmd": "4.0.0",
+    "rsyncwrapper": "3.0.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.4",
+    "eslint": "^7.27.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.3"
+  },
+  "scripts": {
+    "build": "npm run lint && ncc build ./src/index.js -o dist -m",
+    "lint": "eslint ./src/index.js",
+    "lint:fix": "eslint ./src/index.js --fix"
+  }
+}

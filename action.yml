@@ -1,0 +1,42 @@
+name: "Deploy WordPress Website Files to Ubuntu Server"
+description: "Deploy via rsync over SSH with enforced excludes and flexible path configuration."
+author: "FKW Digital <hello@fkwdigital.com>"
+runs:
+  using: "node20"
+  main: "dist/index.js"
+
+inputs:
+  SSH_PRIVATE_KEY:
+    description: "Private key contents (highly recommended to add through GitHub secrets)"
+    required: true
+  REMOTE_HOST:
+    description: "Destination host (server IP or hostname)"
+    required: true
+  REMOTE_USER:
+    description: "SSH username"
+    required: true
+  REMOTE_PORT:
+    description: "SSH port"
+    default: "22"
+  TARGET:
+    description: "Absolute remote path (e.g., /var/www/html, /home/user/public_html)"
+    required: true
+  SOURCE:
+    description: "Relative local source. Defaults to public/."
+    default: "public/"
+  RSYNC_ARGS:
+    description: "Rsync args (space separated)."
+    default: "-azvr --inplace --exclude='.*' --no-perms --no-times"
+  ARGS:
+    description: "(Alias) Same as RSYNC_ARGS for compatibility."
+    required: false
+  EXCLUDE_FILE:
+    description: "Optional path to an rsync --exclude-from file (e.g., ./public/exclude.txt)"
+    required: false
+  EXTRA_EXCLUDE:
+    description: "Optional comma-separated extra exclude patterns appended to the built-in list."
+    required: false
+
+branding:
+  icon: "upload-cloud"
+  color: "blue"
