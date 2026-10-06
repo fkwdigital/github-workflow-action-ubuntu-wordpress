@@ -2,7 +2,7 @@ name: "Deploy WordPress Website Files to Ubuntu Server"
 description: "Deploy via rsync over SSH with enforced excludes and flexible path configuration."
 author: "FKW Digital <hello@fkwdigital.com>"
 runs:
-  using: "node20"
+  using: "node24"
   main: "dist/index.js"
 
 inputs:
